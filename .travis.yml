@@ -7,4 +7,4 @@ python:
 install:
     - pip install pipenv
     - pipenv install --dev
-    - pipenv run flake8 --ignore=E501 *.py
+    - pipenv run test.py
