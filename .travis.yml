@@ -3,4 +3,4 @@ os: linux
 dist: trusty
 language: d
 script:
-    - apt list --installed | grep python
+    - find ~ -name python.rb
