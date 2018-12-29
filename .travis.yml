@@ -2,6 +2,5 @@
 os: linux
 language: generic
 script:
-    - python -c 'import sys,os; print sys.stdout.isatty()'
-    - echo "$TERM"
-    - infocmp "$TERM"
+    - pip download scipy
+    - pip download opencv-python
