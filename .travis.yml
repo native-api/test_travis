@@ -1,6 +1,7 @@
 ---
 os: linux
-dist: trusty
-language: d
+language: generic
 script:
-    - find ~ -name python.rb
+    - python -c 'import sys,os; print os.stdout.isatty()'
+    - echo "$TERM"
+    - infocmp "$TERM"
