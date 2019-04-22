@@ -1,7 +1,5 @@
 ---
-os: linux
+os: windows
 language: generic
 script:
-    - which ruby; ruby --version; which gem; gem --version
-    - gem install travis
-    - which travis; travis version --no-interactive
+    - python2 -c 'import sys; print sys.stdout.encoding'
