@@ -3,4 +3,4 @@ os: linux
 dist: xenial
 language: shell
 script:
-    - dpkg --list ca-certificates
+    - dpkg --list ca-certificates | cat
