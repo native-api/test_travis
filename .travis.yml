@@ -1,5 +1,6 @@
 ---
-os: windows
+os: linux
+dist: xenial
 language: shell
 script:
-    - python -c 'import sys; print sys.stdout.encoding'
+    - dpkg --list ca-certificates
