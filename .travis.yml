@@ -1,15 +1,11 @@
 ---
 os:
   - linux
-  # - osx
-dist:
-  - trusty
-  - xenial
-# osx_image:
-  # - xcode8
-  # - xcode9.4
-  # - xcode10.2
-  
+matrix:
+    include:
+        - dist: xenial
+        - dist: trusty
+
 language: shell
 script:
     - dpkg --list ca-certificates | cat
