@@ -1,15 +1,14 @@
 ---
 os:
   - linux
-  - osx
+  # - osx
 dist:
-  - precise
   - trusty
   - xenial
-osx_image:
-  - xcode8
-  - xcode9.4
-  - xcode10.2
+# osx_image:
+  # - xcode8
+  # - xcode9.4
+  # - xcode10.2
   
 language: shell
 script:
