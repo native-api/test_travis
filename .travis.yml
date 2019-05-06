@@ -1,7 +1,7 @@
 ---
-os: osx
+os: windows
 language: shell
 script:
-    - which curl wget openssl
-    - curl --version; wget --version
-    - set
+    - git config core.autocrlf false
+    - git add --renormalize .
+    - file .travis.yml
