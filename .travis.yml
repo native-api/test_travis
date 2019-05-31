@@ -1,8 +1,7 @@
 ---
 os: windows
 language: shell
+after_checkout:
+    - echo "after checkout"
 script:
-    - git config core.autocrlf false
-    - git add --renormalize .
-    - git reset --hard
-    - file .travis.yml
+    - echo "script"
