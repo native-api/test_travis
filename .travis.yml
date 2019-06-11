@@ -1,7 +1,5 @@
 ---
-#os: windows
+os: windows
 language: shell
-after_checkout:
-    - echo "after checkout"
 script:
-    - echo "script"
+    - powershell -c 'Get-WindowsFeature'
