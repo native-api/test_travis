@@ -1,5 +1,5 @@
 ---
-os: windows
+dist: xenial
 language: shell
 script:
-    - powershell -c 'Get-WindowsFeature'
+    - find ~ -name pages.rb
