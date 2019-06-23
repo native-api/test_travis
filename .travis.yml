@@ -1,12 +1,7 @@
 ---
 dist: xenial
-language: java
-addons:
-  apt:
-    packages:
-      ant
+language: shell
       
 script:
-    - which java
-    - ant -version
-    - find / -xdev \( -name ant -o -name mvn -o -name gradle \)
+    - sudo netstat -tulpn
+    - systemctl
