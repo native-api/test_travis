@@ -1,7 +1,9 @@
 ---
 dist: xenial
 language: java
-apt: packages: ant
+apt:
+   packages:
+     ant
 script:
     - which java
     - ant -version
