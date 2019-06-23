@@ -1,7 +1,5 @@
 ---
-dist:
-  - trusty
-  - xenial
+dist: xenial
 language: java
 script:
     - which java ant
