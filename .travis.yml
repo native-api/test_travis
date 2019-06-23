@@ -1,8 +1,8 @@
 ---
-dist: trusty
+dist: xenial
 language: java
+apt: packages: ant
 script:
     - which java
-    - java --version
     - ant -version
     - find / -xdev \( -name ant -o -name mvn -o -name gradle \)
