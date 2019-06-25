@@ -1,5 +1,5 @@
 ---
-dist: xenial
+dist: bionic
 language: shell
       
 script:
@@ -7,6 +7,8 @@ script:
     - |
       git clone https://github.com/pyenv/pyenv.git ~/.pyenv;
       export PYENV_ROOT="$HOME/.pyenv";
-      export PATH="$PYENV_ROOT/bin:$PATH"
+      export PATH="$PYENV_ROOT/bin:$PATH";
+      eval "$(pyenv init -)"
+    - apt install python3-pip
     - pyenv global system 3.7.1
     - for py in python python3 pip pip3; do which $py; $py --version; done
