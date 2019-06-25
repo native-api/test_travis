@@ -3,5 +3,6 @@ dist: xenial
 language: shell
       
 script:
-    - sudo netstat -tulpn
-    - systemctl
+    - for py in python python3 pip pip3; do which $py; $py --version
+    - pyenv global system 3.7.1
+    - for py in python python3 pip pip3; do which $py; $py --version
