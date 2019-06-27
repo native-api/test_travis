@@ -1,17 +1,20 @@
 ---
-dist: bionic
 language: shell
       
+addons:
+  postgresql: 11
+  apt:
+    packages:
+      - postgresql-11
+      - postgresql-client-11
+services:
+  - postgresql
+  
 script:
-    - for py in python python3 pip pip3; do which $py; $py --version; done
-    - |
-      git clone https://github.com/pyenv/pyenv.git ~/.pyenv;
-      export PYENV_ROOT="$HOME/.pyenv";
-      export PATH="$PYENV_ROOT/bin:$PATH";
-      eval "$(pyenv init -)"
-    - |
-      sudo apt update
-      sudo apt install python3-pip
-    - pyenv install 3.7.1
-    - pyenv global system 3.7.1
-    - for py in python python3 pip pip3; do which $py; $py --version; done
+  - psql -c 'create database travis_ci_test;' -U postgres -w
+
+matrix:
+  include:
+    - dist: trusty
+    - dist: xenial
+    - dist: bionic
