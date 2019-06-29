@@ -1,6 +1,5 @@
 ---
-language: shell
-
+language: minimal
 env:
   global:
     - "PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
@@ -10,6 +9,7 @@ script:
   - curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
   - which rvm
   - rvm --version
-  - bash -x `which rvm` get stable
+  - set -x
+  - rvm get stable
 
 dist: trusty
