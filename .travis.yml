@@ -1,12 +1,9 @@
 ---
-language: minimal
-env:
-  global:
-    - "PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
-
-script:
-  - curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -
-  - curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -
-  - cat $rvm_path/user/db
-
-dist: trusty
+language: shell
+os:
+  - linux
+  - osx
+  - windows
+  
+before_script:
+   - set
