@@ -1,5 +1,5 @@
 ---
-language: shell
+language: python
 os:
   - linux
 
@@ -11,8 +11,11 @@ matrix:
         - dist: bionic
   
 script:
+   - which python2 python3
    - python2 --version; python3 --version
    - ls -l /opt/python
+   - if which pyenv >/dev/null; then pyenv versions; pyenv which python2; pyenv which python3; fi
+   - find / -name 'pypy*' -type f -executable 2>/dev/null || true
    - |
     ubuntu_release=$(lsb_release -r -s)
     function check_release() {
@@ -25,7 +28,7 @@ script:
                 language-archives.travis-ci.com/python ; do
             local url="https://${hosting}/binaries/ubuntu/${ubuntu_release}/x86_64/${python_version}.tar.bz2"
             echo "$url"
-            curl --head "$url" | grep -Ee '^HTTP/'
+            curl -sS --head "$url" | grep -Ee '^HTTP/'
         done
     }
 
@@ -35,9 +38,6 @@ script:
         done
     done
     # list of releases from https://bitbucket.org/pypy/pypy/downloads/
-    for pypy in pypy2 pypy3 pypy{2,3}-{5.{7{,.0,.1},8{,.0,.1},9{,.0},10{,.0},11{,.0}},6.0{,.0}}; do
-        check_release ${pypy}
-    done
-    for pypy in pypy{2.7,3.{5,6}} pypy{27,3{5,6}}-7.{0{,.0,.1},1{,.0,.1}}; do
+    for pypy in pypy{,{2{,.{6..7}},3{,.{3..6}}}}{,-{2..7}{,.{0..10}{,.{0..1}}}}; do
         check_release ${pypy}
     done
