@@ -1,5 +1,5 @@
 ---
-language: shell
+language: python
 os:
   - linux
 
@@ -11,8 +11,11 @@ matrix:
         - dist: bionic
   
 script:
+   - which python2 python3
    - python2 --version; python3 --version
    - ls -l /opt/python
+   - if which pyenv >/dev/null; then pyenv versions; pyenv which python2; pyenv which python3; fi
+   - find / -name 'pypy*' -type f -executable 2>/dev/null || true
    - |
     ubuntu_release=$(lsb_release -r -s)
     function check_release() {
