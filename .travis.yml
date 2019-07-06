@@ -1,11 +1,18 @@
 ---
-language: python
+language: minimal
 os: linux
-dist: bionic
+
+matrix:
+    include:
+        - dist: trusty
+        - dist: xenial
+        - dist: bionic
 
   
 script:
-   - pyenv versions
-   - pyenv local 2.7.15 3.7.1
-   - for cmd in pip pip2 pip3; do pyenv which $cmd; done
-   - which python; pyenv which python
+    - |
+        for cmd in python python2 python3 pip pip2 pip3; do
+            which $cmd || true
+            $cmd --version || true
+        done
+   
