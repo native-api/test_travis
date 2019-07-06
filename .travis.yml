@@ -6,4 +6,8 @@ dist: bionic
   
 script:
    - pyenv versions
-   - pyenv install 2.7.14
+   - ls -l /opt/python
+   - echo "$PYENV_ROOT"; ls -l "$PYENV_ROOT"
+   - pyenv install 2.7.14 --verbose
+   - ls -l /opt/python
+   - pyenv commands
