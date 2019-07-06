@@ -1,18 +1,16 @@
 ---
-language: minimal
+language: python
 os: linux
+dist: xenial
+python:
+    - 2.7
+    - 3.5
+    - 3.6
+    - 3.7
+    - pypy
+    - pypy3
+    - pypy3.5
 
-matrix:
-    include:
-        - dist: trusty
-        - dist: xenial
-        - dist: bionic
-
-  
 script:
-    - |
-        for cmd in python python2 python3 pip pip2 pip3; do
-            which $cmd || true
-            $cmd --version || true
-        done
+    - python --version
    
