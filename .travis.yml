@@ -1,5 +1,5 @@
 ---
-language: python
+language: generic
 os:
   - linux
 
@@ -16,28 +16,3 @@ script:
    - ls -l /opt/python
    - if which pyenv >/dev/null; then pyenv versions; pyenv which python2; pyenv which python3; fi
    - find / -name 'pypy*' -type f -executable 2>/dev/null || true
-   - |
-    ubuntu_release=$(lsb_release -r -s)
-    function check_release() {
-        local python_version="$1"
-        echo $python_version
-        # travis-build/lib/travis/build/script/python.rb:install_python_archive
-        for hosting in \
-                storage.googleapis.com/travis-ci-language-archives/python \
-                s3.amazonaws.com/travis-python-archives \
-                language-archives.travis-ci.com/python ; do
-            local url="https://${hosting}/binaries/ubuntu/${ubuntu_release}/x86_64/${python_version}.tar.bz2"
-            echo "$url"
-            curl -sS --head "$url" | grep -Ee '^HTTP/'
-        done
-    }
-
-    for python in 2.{6,7} 3.{3..8}; do
-        for micro in "" .{0..16}; do
-            check_release python-${python}${micro}
-        done
-    done
-    # list of releases from https://bitbucket.org/pypy/pypy/downloads/
-    for pypy in pypy{,{2{,.{6..7}},3{,.{3..6}}}}{,-{2..7}{,.{0..10}{,.{0..1}}}}; do
-        check_release ${pypy}
-    done
