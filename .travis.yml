@@ -12,9 +12,11 @@ matrix:
         - language: crystal
         - language: d
         - language: dart
-        - language: elixir
         - language: elm
         - language: erlang
+          otp_release: 18.1
+        - language: elixir
+          otp_release: 18.1
         - language: generic
         - language: go
         - language: groovy
