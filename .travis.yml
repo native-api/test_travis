@@ -1,19 +1,41 @@
 ---
-language: python
 os: linux
 dist: xenial
-python:
-    - 2.7
-    - 3.3
-    - 3.4
-    - 3.5
-    - 3.6
-    - 3.7
-    - pypy
-    - pypy2.7
-    - pypy3
-    - pypy3.5
+
+matrix:
+    include:
+        - language: android
+        - language: c
+        - language: csharp
+        - language: cpp
+        - language: clojure
+        - language: crystal
+        - language: d
+        - language: dart
+        - language: elixir
+        - language: elm
+        - language: erlang
+        - language: generic
+        - language: go
+        - language: groovy
+        - language: haskell
+        - language: haxe
+        - language: java
+        - language: node_js
+        - language: julia
+        - language: minimal
+        - language: bash
+        - language: sh
+        - language: shell
+        - language: nix
+        - language: perl
+        - language: php
+        - language: python
+        - language: r
+        - language: ruby
+        - language: rust
+        - language: scala
+        - language: smalltalk
 
 script:
-    - python --version
-   
+    - pyenv versions
