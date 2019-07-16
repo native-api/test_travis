@@ -10,7 +10,9 @@ matrix:
     include:
         - env: FOO=stage1
           stage: stage1
+          name: foo_stage1
         - env: FOO=test
           stage: test
+          name: foo_test
     
 script: echo FOO=$FOO BAR=$BAR
