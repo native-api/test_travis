@@ -3,9 +3,8 @@ os: linux
 language: generic
 
 env:
-    global:
-        FOO=global
-        BAR=global
+    - FOO=global
+    - BAR=global
 
 matrix:
     include:
