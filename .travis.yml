@@ -1,18 +1,17 @@
 ---
+os: linux
 language: generic
-os:
-  - linux
 
+env:
+    global:
+        FOO=global
+        BAR=global
 
 matrix:
     include:
-        - dist: trusty
-        - dist: xenial
-        - dist: bionic
-  
-script:
-   - which python2 python3
-   - python2 --version; python3 --version
-   - ls -l /opt/python
-   - if which pyenv >/dev/null; then pyenv versions; pyenv which python2; pyenv which python3; fi
-   - find / -name 'pypy*' -type f -executable 2>/dev/null || true
+        - env: FOO=stage1
+          stage: stage1
+        - env: FOO=test
+          stage: test
+    
+script: echo FOO=$FOO BAR=$BAR
