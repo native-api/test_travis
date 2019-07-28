@@ -5,10 +5,14 @@ language: generic
 matrix:
     include:
         - dist: precise
+          name: precise
         - dist: trusty
+          name: trusty
         - dist: xenial
+          name: xenial
         - dist: bionic
+          name: bionic
         
 script:
-    - set
-    - sleep 2
+    - gcc --version
+    - clang --version
