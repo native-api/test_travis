@@ -1,18 +1,23 @@
----
-os: linux
-language: generic
+os: windows
+language: shell
 
-matrix:
-    include:
-        - dist: precise
-          name: precise
-        - dist: trusty
-          name: trusty
-        - dist: xenial
-          name: xenial
-        - dist: bionic
-          name: bionic
+
+install:
+    - |
+        set -ex
+        export DEPENDS_PATH="${HOME}/dep"
+        export PYTHON_PATH="/c/Python37"
+        choco install python && \
+        export "PATH=$PYTHON_PATH/Scripts:$PYTHON_PATH:$PATH"
+        pip3 install opencv_python
+        curl -L -O https://github.com/lucasg/Dependencies/releases/download/v1.9/Dependencies_x64_Release.zip && \
+        7z x Dependencies_x64_Release.zip -o"$DEPENDS_PATH" && \
+        rm -v Dependencies_x64_Release.zip
+        export "PATH=$DEPENDS_PATH:$PATH"
+        set +ex
         
 script:
-    - gcc --version
-    - clang --version
+    - pushd /c/Python37/Lib/site-packages/cv2
+    - ls
+    - dependencies cv2.cp37-win_amd64.pyd -modules -chain
+    - dependencies opencv_ffmpeg410_64.dll -modules -chain
