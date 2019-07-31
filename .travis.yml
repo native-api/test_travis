@@ -12,7 +12,9 @@ matrix:
           name: xenial
         - dist: bionic
           name: bionic
-        
+
+services:
+    - docker
+          
 script:
-    - gcc --version
-    - clang --version
+    - docker --version
