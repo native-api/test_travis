@@ -1,20 +1,39 @@
----
-os: linux
-language: generic
-
-matrix:
-    include:
-        - dist: precise
-          name: precise
-        - dist: trusty
-          name: trusty
-        - dist: xenial
-          name: xenial
-        - dist: bionic
-          name: bionic
+language: java
+sudo: required
+dist: trusty
+jdk: openjdk8
 
 services:
-    - docker
-          
-script:
-    - docker --version
+    - xvfb
+
+cache:
+    directories:
+        - $HOME/.m2
+
+before_install:
+    - echo $JAVA_HOME
+    - export ANDROID_HOME=~/android-sdk-linux
+    - wget -q "https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip" -O android-sdk-tools.zip
+    - unzip -q android-sdk-tools.zip -d ${ANDROID_HOME}
+    - rm android-sdk-tools.zip
+    - PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/tools/bin:${ANDROID_HOME}/platform-tools
+    - mkdir -p ~/.android
+    - touch ~/.android/repositories.cfg
+    - yes | sdkmanager --licenses
+    - yes | sdkmanager "emulator" "tools" "platform-tools" > /dev/null
+    - yes | sdkmanager "platforms;android-28" > /dev/null
+    - yes | sdkmanager "build-tools;28.0.3" > /dev/null
+    - yes | sdkmanager "system-images;android-22;google_apis;armeabi-v7a" > /dev/null
+    - npm install -g appium > /dev/null
+    - sudo apt-get install -y --no-install-recommends lib32stdc++6 libstdc++6 > /dev/null
+
+before_script:
+    - wget -O somaapp.apk https://somapp
+    - cd -
+    - appium --log-level debug > appium_log.txt &
+    - echo no | avdmanager create avd --force -n test -k "system-images;android-22;google_apis;armeabi-v7a"
+    - export ANDROID_SDK_ROOT=~/android-sdk-linux
+    - export DISPLAY=:99.0
+    - adb devices
+    - $ANDROID_HOME/emulator/emulator -avd test -gpu off -no-accel &
+    - sleep 60
