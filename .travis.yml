@@ -1,20 +1,8 @@
 ---
 os: linux
-language: generic
+language: python
+dist: xenial
+python: 3.6
 
-matrix:
-    include:
-        - dist: precise
-          name: precise
-        - dist: trusty
-          name: trusty
-        - dist: xenial
-          name: xenial
-        - dist: bionic
-          name: bionic
-
-services:
-    - docker
-          
 script:
-    - docker --version
+    - find / -xdev -name 'setuptools*'
