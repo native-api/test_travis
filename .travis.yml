@@ -1,8 +1,23 @@
 ---
 os: linux
-language: python
+language: generic
 dist: xenial
-python: 3.6
+
+stages:
+    - one
+    - two
+    - optional
 
 script:
-    - find / -xdev -name 'setuptools*'
+    - sleep 30
+    
+allow_failures:
+    - stage: optional
+    
+matrix:
+    include:
+        - stage: one
+        - stage: two
+        - stage: optional
+        
+fast_finish: true
