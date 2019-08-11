@@ -10,7 +10,7 @@ install:
         choco install python && \
         export "PATH=$PYTHON_PATH/Scripts:$PYTHON_PATH:$PATH"
         pip3 install opencv_python
-        curl -L -O https://github.com/lucasg/Dependencies/releases/download/v1.9/Dependencies_x64_Release.zip && \
+        curl -L https://ci.appveyor.com/api/buildjobs/tqfq86cqtgyykjbd/artifacts/output%2FDependencies_x64_Release.zip -o Dependencies_x64_Release.zip && \
         7z x Dependencies_x64_Release.zip -o"$DEPENDS_PATH" && \
         rm -v Dependencies_x64_Release.zip
         export "PATH=$DEPENDS_PATH:$PATH"
