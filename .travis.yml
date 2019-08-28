@@ -4,5 +4,9 @@ language: php
 php: 7.2
 
 script:
+    - phpenv versions
+    - phpenv version
+    - phpenv root
+    - phpenv prefix
     - set | grep TRAVIS
     - php -i
