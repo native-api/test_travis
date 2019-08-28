@@ -3,5 +3,6 @@ dist: xenial
 language: php
 php: 7.2
 
-script: |
-    php -i
+script:
+    - set | grep TRAVIS
+    - php -i
