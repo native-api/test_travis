@@ -1,23 +1,7 @@
 os: linux
-language: generic
-
-matrix:
-    include:
-        - dist: trusty
-          name: trusty
-        - dist: xenial
-          name: xenial
-        - dist: bionic
-          name: bionic
-
+dist: xenial
+language: php
+php: 7.2
 
 script: |
-    release=$(lsb_release -rs)
-    for suffix in "" "-shrplib"; do
-        for minor in {16..30..2}; do
-            version="5.${minor}${suffix}"
-            echo $version
-            curl -L --head "https://storage.googleapis.com/travis-ci-language-archives/perl/binaries/ubuntu/${release}/x86_64/perl-${version}.tar.bz2" \
-                    | head -n 1 || true
-        done
-    done
+    php -i
