@@ -1,12 +1,9 @@
 os: linux
 dist: xenial
-language: php
-php: 7.2
+language: generic
 
 script:
-    - phpenv versions
-    - phpenv version
-    - phpenv root
-    - phpenv prefix
-    - set | grep TRAVIS
-    - php -i
+    - apt list --installed | grep -P '^[^/]*git[^/]*/'
+    - apt show git
+    - apt show git-svn
+    - cat /etc/apt/sources.list
