@@ -7,3 +7,4 @@ script:
     - apt show git
     - apt show git-svn
     - cat /etc/apt/sources.list
+    - dpkg --listfiles git git-core git-lfs git-man
