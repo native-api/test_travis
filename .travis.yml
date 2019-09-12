@@ -2,9 +2,11 @@ os: linux
 dist: xenial
 language: generic
 
-script:
-    - apt list --installed | grep -P '^[^/]*git[^/]*/'
-    - apt show git
-    - apt show git-svn
-    - cat /etc/apt/sources.list
-    - dpkg --listfiles git git-core git-lfs git-man
+addons:
+    chrome: stable
+
+script: |
+    for p in google-chrome chromedriver; do
+        which $p
+        $p --version
+    done
