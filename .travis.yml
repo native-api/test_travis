@@ -1,12 +1,5 @@
 os: linux
 dist: xenial
-language: generic
+language: r
 
-addons:
-    chrome: stable
-
-script: |
-    for p in google-chrome chromedriver; do
-        which $p
-        $p --version
-    done
+r: 3.4
