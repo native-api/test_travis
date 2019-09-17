@@ -1,5 +1,10 @@
-os: linux
-dist: xenial
-language: r
+os: windows
+language: shell
 
-r: 3.4
+script: |
+    which python; python --version
+    python -c 'if True:
+        import subprocess
+        subprocess.check_call("echo bla-bla-bla", shell=True)
+        subprocess.check_call("echo bla-bla-bla2 >&2", shell=True)
+    '
