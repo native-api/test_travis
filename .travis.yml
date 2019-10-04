@@ -14,4 +14,5 @@ script: |
   apt list --installed
   apt-mark showhold
   apt-cache rdepends mysql-client-core-5.7 mysql-server-core-5.7 --installed --recurse
+  apt show mariadb-server-core-10.1
   set +x
