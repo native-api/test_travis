@@ -13,4 +13,5 @@ script: |
   sudo apt-get install -y  -o Dpkg::Options::='--force-confnew' $PACKAGES
   apt list --installed
   apt-mark showhold
+  apt-cache rdepends mysql-client-core-5.7 mysql-server-core-5.7 --installed --recurse
   set +x
