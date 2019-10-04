@@ -10,7 +10,7 @@ script: |
   sudo add-apt-repository "deb http://${MARIADB_MIRROR}/mariadb/repo/${mariadb_version}/ubuntu $TRAVIS_DIST main"
   travis_apt_get_update
   PACKAGES="mariadb-server-${mariadb_version}"
-  sudo apt-get install -y  -o Dpkg::Options::='--force-confnew' $PACKAGES
+  sudo apt-get install -y -o Debug::pkgProblemResolver=yes -o Dpkg::Options::='--force-confnew' $PACKAGES
   apt list --installed
   apt-mark showhold
   apt-cache rdepends mysql-client-core-5.7 mysql-server-core-5.7 --installed --recurse
