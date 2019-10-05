@@ -3,6 +3,19 @@ dist: xenial
 language: generic
 services: docker
 script: |
-  set -x
-  sudo docker run -v /etc/apt:/io ubuntu:xenial bash -c 'diff -u9999rN /etc/apt /io'
+  set -ex
+  sudo docker run -v /etc/apt:/io ubuntu:xenial bash -c '
+        cp -r /io/* -t /etc/apt
+  MARIADB_MIRROR='nyc2.mirrors.digitalocean.com'
+  MARIADB_GPG_KEY_NEW='0xf1656f24c74cd1d8'
+  mariadb_version=10.1
+  apt update
+  apt install software-properties-common
+  apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 ${MARIADB_GPG_KEY_NEW}
+  apt-add-repository "deb http://${MARIADB_MIRROR}/mariadb/repo/${mariadb_version}/ubuntu xenial main"
+  apt update
+  PACKAGES="mariadb-server-${mariadb_version}"
+  apt-get install -y -o Debug::pkgProblemResolver=yes -o Dpkg::Options::='--force-confnew' $PACKAGES
+
+  '
   set +x
