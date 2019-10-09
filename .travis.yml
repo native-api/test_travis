@@ -1,5 +1,5 @@
 os: osx
 script:
     - which clang; clang --version
-    - brew update; brew install llvm
-    - which clang; clang --version
+    - brew install llvm libomp
+    - /usr/local/opt/llvm/bin/clang --version
