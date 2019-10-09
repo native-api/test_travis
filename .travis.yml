@@ -1,5 +1,9 @@
-language: julia
+language: generic
 os:
   - osx
 julia:
   - 1.4
+  
+script:
+    - curl -A "$CURL_USER_AGENT" -L --retry 7 -o julia.dmg 'https://julialang-s3.julialang.org/bin/mac/x64/1.4/julia-1.4-latest-mac64.dmg'
+    - ls -l julia.dmg
