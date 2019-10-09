@@ -1,5 +1,12 @@
-os: osx
+os: linux
+language: generic
+matrix:
+    include:
+        -   dist: trusty
+            name: trusty
+        -   dist: xenial
+            name: xenial
+        -   dist: bionic
+            name: bionic
 script:
-    - which clang; clang --version
-    - brew install llvm libomp
-    - /usr/local/opt/llvm/bin/clang --version
+    - sysctl kernel.unprivileged_userns_clone
