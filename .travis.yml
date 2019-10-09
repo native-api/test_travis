@@ -1,12 +1,5 @@
-os: linux
-language: generic
-matrix:
-    include:
-        -   dist: trusty
-            name: trusty
-        -   dist: xenial
-            name: xenial
-        -   dist: bionic
-            name: bionic
-script:
-    - sudo cat /etc/docker/daemon.json
+language: julia
+os:
+  - osx
+julia:
+  - 1.4
