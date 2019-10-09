@@ -9,4 +9,4 @@ matrix:
         -   dist: bionic
             name: bionic
 script:
-    - sysctl kernel.unprivileged_userns_clone
+    - sudo cat /etc/docker/daemon.json
