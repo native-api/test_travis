@@ -1,21 +1,5 @@
-os: linux
-dist: xenial
-language: generic
-services: docker
-script: |
-  set -ex
-  #apt-mark showmanual
-  #sudo docker run -v /etc/apt:/io ubuntu:xenial bash -c '
-  #      cp -r /io/* -t /etc/apt
-  #apt update
-  #apt install software-properties-common
-  MARIADB_MIRROR='nyc2.mirrors.digitalocean.com'
-  MARIADB_GPG_KEY_NEW='0xf1656f24c74cd1d8'
-  mariadb_version=10.1
-  sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 ${MARIADB_GPG_KEY_NEW}
-  sudo apt-add-repository "deb http://${MARIADB_MIRROR}/mariadb/repo/${mariadb_version}/ubuntu xenial main"
-  sudo apt update
-  PACKAGES="$(echo mariadb-server{,-core}-${mariadb_version} mariadb-client{,-core}-${mariadb_version})"
-  sudo apt-get install -y -o Debug::pkgProblemResolver=yes -o Dpkg::Options::='--force-confnew' $PACKAGES
-  '
-  set +x
+os: osx
+script:
+    - which clang; clang --version
+    - brew update; brew install llvm
+    - which clang; clang --version
