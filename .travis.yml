@@ -1,4 +1,8 @@
 language: generic
 os: linux
-script:
-    - rvm list
+addons:
+  apt:
+    sources:
+    - sourceline: ppa:git-core/ppa
+    packages:
+    - git-svn
