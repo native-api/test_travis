@@ -3,6 +3,6 @@ os: linux
 addons:
   apt:
     sources:
-    - sourceline: ppa:git-core/ppa
+      - git-core
     packages:
-    - git-svn
+      - git-svn
