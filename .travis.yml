@@ -4,4 +4,5 @@ osx_image: xcode9.4
 script:
     - "export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
     - (cd $(brew --repository); git describe --all)
-    - /bin/bash -x /usr/local/Homebrew/Library/Homebrew/brew.sh install --debug qt5
+    - sed -Ei.old 's|(/usr/bin/env -i "\$\{FILTERED_ENV\[@\]\}" /bin/bash)|\1 -x|' /usr/local/bin/brew && diff /usr/local/bin/brew{.old,}
+    - bash -x /usr/local/bin/brew install --debug qt5
