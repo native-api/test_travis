@@ -1,8 +1,8 @@
 language: generic
-os: linux
-addons:
-  apt:
-    sources:
-      - git-core
-    packages:
-      - git-svn
+os: osx
+osx_inmage: xcode9.4
+script:
+    - brew update
+    - brew update
+    - brew doctor
+    - brew install qt5
