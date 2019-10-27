@@ -1,5 +1,7 @@
 language: generic
 os: osx
-osx_inmage: xcode9.4
+osx_image: xcode9.4
 script:
-    - brew install qt5 ninja
+    - "export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
+    - (cd $(brew --repository); git describe --all)
+    - /bin/bash -x /usr/local/Homebrew/Library/Homebrew/brew.sh install --debug qt5
