@@ -5,5 +5,5 @@ script:
     - "export PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
     - (cd $(brew --repository); git describe --all)
     - BREW=$(readlink $(which brew))
-    - sed -Ei.old 's|(/usr/bin/env -i "\$\{FILTERED_ENV\[@\]\}" /bin/bash)|\1 -x|' $BREW && diff ${BREW}{.old,}
+    - sed -Ei.old 's|(/usr/bin/env -i "\$\{FILTERED_ENV\[@\]\}" /bin/bash)|\1 -x|;s|(for VAR in HOME)|\1 PS4|' $BREW && diff ${BREW}{.old,}
     - bash -x $BREW install --debug qt5
