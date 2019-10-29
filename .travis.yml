@@ -1,8 +1,4 @@
 language: generic
-os: osx
-osx_inmage: xcode9.4
-script:
-    - brew update
-    - brew update
-    - brew doctor
-    - brew install qt5
+os: linux
+
+invalid_tag:
