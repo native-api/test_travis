@@ -1,4 +1,5 @@
-language: generic
-os: linux
+language: shell
+os: windows
 
-invalid_tag:
+script:
+    - df -lh
