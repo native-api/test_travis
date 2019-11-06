@@ -1,5 +1,14 @@
 language: shell
-os: windows
+os: linux
 
-script:
-    - df -lh
+script: skip
+
+addons:
+    apt:
+        packages:
+            - pigz
+
+matrix:
+    include:
+        - dist: xenial
+        - dist: bionic
