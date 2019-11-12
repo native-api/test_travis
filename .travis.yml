@@ -4,6 +4,9 @@ os: linux
 script: skip
 
 addons:
-    apt:
-        packages:
-            - pigz
+  apt:
+    packages: ['pcregrep']
+    
+import:
+  - source: include.yml
+    mode: deep_merge_append
