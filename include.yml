@@ -1,3 +1,4 @@
 addons:
   apt:
-    packages: ['docker-ce']
+    packages:
+        - docker-ce

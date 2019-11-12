@@ -5,7 +5,8 @@ script: skip
 
 addons:
   apt:
-    packages: ['pcregrep']
+    packages:
+        - pcregrep
     
 import:
   - source: include.yml
