@@ -3,9 +3,11 @@ os: windows
 
 script:
     - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
-    - ./procmon //AcceptEula //Quiet //Minimized //BackingFile abc.pml &
-    - sleep 1
+    - ./procmon //AcceptEula //Quiet //Minimized //BackingFile error.pml & sleep 1
     - certutil -v -user -p Travis -importpfx certificate.pfx
     - ./procmon //Terminate
-    - gzip abc.pml
-    - curl -T abc.pml.gz ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
+    - certutil -v -p Travis -importpfx certificate.pfx
+    - ./procmon //Terminate
+    - gzip {error,ok}.pml
+    - curl -T "{error,ok}.pml.gz" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
