@@ -8,4 +8,4 @@ script:
     - certutil -user -store "My"
     - certutil -store "My"
     - powershell -Command "ls Registry::HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates"
-    - powershell -Command "ls Registry::HKEY_CURRENT_USER\Software\Microsoft"
+    - powershell -Command 'get-acl Registry::HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates\My | fl *'
