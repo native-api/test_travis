@@ -1,13 +1,7 @@
 language: shell
-os: linux
+os: windows
 
-script: skip
-
-addons:
-  apt:
-    packages:
-        - pcregrep
-    
-import:
-  - source: include.yml
-    mode: deep_merge_append
+script:
+    - powershell -Command "ls Cert:\LocalMachine"
+    - certutil -v -user -p Travis -importpfx certificate.pfx
+    - certutil -v -p Travis -importpfx certificate.pfx
