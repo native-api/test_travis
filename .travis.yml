@@ -5,3 +5,9 @@ script:
     - powershell -Command "ls Cert:\LocalMachine"
     - certutil -v -user -p Travis -importpfx certificate.pfx
     - certutil -v -p Travis -importpfx certificate.pfx
+    - certutil -store "My"
+    - certutil -store
+    - reg export HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates reg.reg
+    - cat reg.reg
+    - reg export HKEY_CURRENT_USER\Software\Policies\Microsoft\SystemCertificates reg.reg
+    - cat reg.reg
