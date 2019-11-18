@@ -2,10 +2,10 @@ language: shell
 os: windows
 
 script:
-    - powershell -Command "ls Cert:\LocalMachine"
+    - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
+    - ./procmon //AcceptEula //Quiet //Minimized //BackingFile abc.pml &
+    - sleep 1
     - certutil -v -user -p Travis -importpfx certificate.pfx
-    - certutil -v -p Travis -importpfx certificate.pfx
-    - certutil -user -store "My"
-    - certutil -store "My"
-    - powershell -Command "ls Registry::HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates"
-    - powershell -Command 'get-acl Registry::HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates\My | fl *'
+    - ./procmon //Terminate
+    - gzip abc.pml
+    - curl -T abc.pml.gz ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
