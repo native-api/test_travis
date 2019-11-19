@@ -4,11 +4,12 @@ os: windows
 script:
     # - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
     # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile error.pml & sleep 1
-    # - certutil -v -user -p Travis -importpfx certificate.pfx
+    - certutil -v -user -p Travis -importpfx certificate.pfx AT_SIGNATURE
+    - certutil -f -v -user -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
     # - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
     # - certutil -v -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
     # - gzip {error,ok}.pml
     # - curl -T "{error,ok}.pml.gz" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
-    - curl -T "C:/Windows/System32/{rsaenh.dll,crypt32.dll}" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    # - curl -T "C:/Windows/System32/{rsaenh.dll,crypt32.dll}" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
