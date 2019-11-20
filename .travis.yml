@@ -4,7 +4,8 @@ os: windows
 script:
     # - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
     # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile error.pml & sleep 1
-    # - certutil -v -user -p Travis -importpfx certificate.pfx AT_SIGNATURE
+    - /c/Windows/Microsoft.NET/Framework64/v4.0.30319/aspnet_regiis.exe -pc "My" -exp -pku
+    - certutil -v -user -p Travis -importpfx certificate.pfx AT_SIGNATURE
     # - certutil -f -v -user -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
     # - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
@@ -12,4 +13,4 @@ script:
     # - ./procmon //Terminate
     # - gzip {error,ok}.pml
     # - curl -T "{error,ok}.pml.gz" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
-    - curl -T "C:/Windows/System32/certutil.exe" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    # - curl -T "C:/Windows/System32/certutil.exe" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
