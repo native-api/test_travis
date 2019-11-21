@@ -2,20 +2,21 @@ language: shell
 os: windows
 
 script:
-    # - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
-    # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile regiis.pml & sleep 1
+    - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
     # - /c/Windows/Microsoft.NET/Framework64/v4.0.30319/aspnet_regiis.exe -pc "My" -pku
     #- powershell -Command "New-SelfSignedCertificate -Subject $USER -CertStoreLocation Cert:\\CurrentUser\\My"
     #- cipher /k
     # - certutil -user -viewstore "My"
-    - certutil -user -store "My"
+    - rm -rfv 'C:\Users\travis\AppData\Roaming\Microsoft\Crypto\RSA'
+    # - certutil -user -store "My"
     # - certutil -user -viewstore "My"
+    - ./procmon //AcceptEula //Quiet //Minimized //BackingFile cleanup.pml & (until test -f *.pml; do sleep 1; done)
     - certutil -v -user -p Travis -importpfx certificate.pfx AT_SIGNATURE
     # - certutil -f -v -user -p Travis -importpfx certificate.pfx
-    # - ./procmon //Terminate
+    - ./procmon //Terminate
     # - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
     # - certutil -v -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
-    # - gzip regiis.pml
-    # - curl -T "regiis.pml.gz" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    - gzip *.pml
+    - curl -T "$(echo *.pml.gz)" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
     # - curl -T "C:/Windows/System32/certutil.exe" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
