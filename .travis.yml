@@ -5,7 +5,8 @@ script:
     # - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
     # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile regiis.pml & sleep 1
     # - /c/Windows/Microsoft.NET/Framework64/v4.0.30319/aspnet_regiis.exe -pc "My" -pku
-    - powershell -Command "New-SelfSignedCertificate -Subject $USER -CertStoreLocation Cert:\\CurrentUser\\My"
+    #- powershell -Command "New-SelfSignedCertificate -Subject $USER -CertStoreLocation Cert:\\CurrentUser\\My"
+    - cipher /k
     - certutil -v -user -p Travis -importpfx certificate.pfx AT_SIGNATURE
     # - certutil -f -v -user -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
