@@ -8,7 +8,7 @@ script:
     #- powershell -Command "New-SelfSignedCertificate -Subject $USER -CertStoreLocation Cert:\\CurrentUser\\My"
     #- cipher /k
     # - certutil -user -viewstore "My"
-    - certutil -user -viewdelstore "My"
+    - certutil -user -store "My"
     # - certutil -user -viewstore "My"
     - certutil -v -user -p Travis -importpfx certificate.pfx AT_SIGNATURE
     # - certutil -f -v -user -p Travis -importpfx certificate.pfx
