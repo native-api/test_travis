@@ -1,9 +1,11 @@
-language: shell
+language: generic
 os: linux
 
-script: skip
+arch:
+    - arm64
+    - ppc64
+    - s390x
 
-addons:
-    apt:
-        packages:
-            - pigz
+script:
+    - uname -a
+    - find /usr/src
