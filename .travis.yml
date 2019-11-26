@@ -1,11 +1,11 @@
-language: generic
-os: linux
-
-arch:
-    - arm64
-    - ppc64
-    - s390x
-
+language: shell
+os:
+- linux
+- osx
+- windows
 script:
-    - uname -a
-    - find /usr/src
+- echo "1:" $MYSECRETVAR
+- echo "2:" $MYSECRETVAR >&2
+env:
+  global:
+  - secure: MIDWR28kSMS4ANmxgZJcc5eeplEaQwn6G7SImmUE61OvQkGxUgeDiqT2lyLjLKJjIc1mK/XTLvgZlUPEiju8qfxTfdGk2YTJQZ3RicNberrNxojK3pNlzyj8XwppiYaD+LfehjRrr0EXPvlnYnEtXOuk7J2axnMSmDBQjtdRvh6Se3FMDxROlZIOsw2q3ltMp8yjXolBAoj1xHD0PP9sAU2BAbpuKQnKR28t0lvgPSBw9DXq48lvcrjbnixPoscB5KwY30Av3N26M720s18aQ7OE9uxdOcaPiuvsWIxqA0PrN7FgR0llTwb89beZYN9Oh9wh2dYsi4EknrGLKq4b/uiAd6KqRyrIoypbU9Yd6Svt8n6SCKAYeokBd9Ed7KVaRQ2ciaFyH7Xmdx+Zl09axDBd+KmMas5BMJFQhhxQqbzl8pNjz/r/C8FRGFC0uDd470HdR2BvsIagM5K+wWMCSks5Ac+EpFCE2gDILvq7rFe01FDEWHLYWsSVnZMs9BKRdl9JGx79tTNeJr2LhNGQwe3nHFtYgR/oDn274Cwyjl7/3vZfGGjjy4DBuyVfkaSPdi9PlYc1uMIBZXzCkDAg3XA9O0AxYhv5bBvIsUxU7e+axMX4bYBThQ14EFtZcEficO1W3fjvwSHDnA9TZFRKVtEMLdxUGsrxyTTHpN1EKQ0=
