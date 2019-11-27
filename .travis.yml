@@ -1,8 +1,8 @@
-language: shell
+language: generic
 os:
 - linux
 - osx
-- windows
+#- windows
 script:
 - echo "1:" $MYSECRETVAR
 - echo "2:" $MYSECRETVAR >&2
