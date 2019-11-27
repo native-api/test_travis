@@ -1,4 +1,5 @@
 language: generic
+version: ~> 1.0
 os:
 - linux
 - osx
