@@ -6,4 +6,5 @@ os:
 #- windows
 script:
 - source my_travis_terminate.sh
-- (exit 1)
+- set
+- echo $$; echo $BASHPID
