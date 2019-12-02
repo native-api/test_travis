@@ -9,3 +9,4 @@ script:
 - set
 - echo $$; echo $BASHPID
 - ( echo $$; echo $BASHPID; exit 1 )
+- bash -c 'declare -F travis_terminate exit'
