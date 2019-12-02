@@ -1,10 +1,11 @@
-language: generic
+language: shell
 version: ~> 1.0
 os:
 - linux
 - osx
-#- windows
+- windows
 script:
 - source my_travis_terminate.sh
 - set
 - echo $$; echo $BASHPID
+- ( echo $$; echo $BASHPID; exit 1 )

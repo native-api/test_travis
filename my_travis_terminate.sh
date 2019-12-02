@@ -8,6 +8,7 @@ travis_terminate() {
 }
 
 exit() {
+  if [ $$ -ne $BASHPID ]; then return; fi
   travis_terminate "${1:-$?}"
 }
 
