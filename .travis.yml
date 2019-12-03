@@ -2,8 +2,7 @@ language: shell
 version: ~> 1.0
 os:
 - linux
-- osx
-- windows
+arch: i386
 script:
 - source my_travis_terminate.sh
 - set
