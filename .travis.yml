@@ -2,10 +2,13 @@ language: shell
 version: ~> 1.0
 os:
 - linux
-arch: i386
+dist: xenial
 script:
-- source my_travis_terminate.sh
-- set
-- echo $$; echo $BASHPID
-- ( echo $$; echo $BASHPID; exit 1 )
-- bash -c 'declare -F travis_terminate exit'
+- which clang-7
+- ls -l /usr/local/bin
+- clang --version
+
+jobs:
+    - language: c
+    - language: generic
+    - language: minimal
