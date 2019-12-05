@@ -17,7 +17,7 @@ install: |
     
     
 script:
-    # - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
+    - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
     # - /c/Windows/Microsoft.NET/Framework64/v4.0.30319/aspnet_regiis.exe -pc "My" -pku
     #- powershell -Command "New-SelfSignedCertificate -Subject $USER -CertStoreLocation Cert:\\CurrentUser\\My"
     #- cipher /k
@@ -25,18 +25,17 @@ script:
     # - rm -rfv 'C:\Users\travis\AppData\Roaming\Microsoft\Crypto\RSA'
     # - certutil -user -store "My"
     # - certutil -user -viewstore "My"
-    # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile cleanup.pml & (until test -f *.pml; do sleep 1; done)
+    - ./procmon //AcceptEula //Quiet //Minimized //BackingFile error.pml & (until test -f *.pml; do sleep 1; done)
     - logman create trace My -p Microsoft-Windows-Crypto-RSAEnh -o my.etl
     - logman start My
     - certutil -v -user -p Travis -importpfx certificate.pfx
     - logman stop My
-    # - certutil -f -v -user -p Travis -importpfx certificate.pfx
-    # - ./procmon //Terminate
+    - ./procmon //Terminate
     # - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
     # - certutil -v -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
     #- reg export 'HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates' systemcertificates.reg //y
-    - gzip *.etl
-    - curl -T "$(echo *.gz)" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    - gzip -v *.etl *.pml
+    - curl -T "$(perl -e 'print "{".join(",",@ARGV)."}"' *.gz)" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
     # - curl -T "C:/Windows/System32/certutil.exe" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
     
