@@ -1,6 +1,21 @@
 language: shell
 os: windows
 
+install: |
+    set -x
+    SID="$(mkpasswd | awk -F: -v U="$USERNAME" '$1==U{print $5}' | awk -F, '{print $2}')"
+    MACHINE_GUID="$(reg query 'HKLM\SOFTWARE\Microsoft\Cryptography' -v MachineGuid | awk -F'    ' '$2=="MachineGuid"{print $4}')"
+    DIR="$(echo $(cygpath -u "$APPDATA")/Microsoft/Crypto/RSA/$SID)"
+    mkdir -p "$DIR"
+    PREFIXES="e945836ab29f9678aa44274952eb8831 facb89a2cab7eb81ccd05d998e0cabd4"
+    for PREFIX in $PREFIXES; do
+        FILE="$DIR/${PREFIX}_$MACHINE_GUID"
+        python2 -c 'import sys; sys.stdout.write("\x02"+"\0"*7+"\x05"+"\0"*31+"GAIA\0")' >"$FILE"
+        xxd "$FILE"
+    done
+    set +x
+    
+    
 script:
     # - curl -f -O ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/procmon.exe
     # - /c/Windows/Microsoft.NET/Framework64/v4.0.30319/aspnet_regiis.exe -pc "My" -pku
@@ -11,16 +26,17 @@ script:
     # - certutil -user -store "My"
     # - certutil -user -viewstore "My"
     # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile cleanup.pml & (until test -f *.pml; do sleep 1; done)
-    #- logman create trace My -p Microsoft-Windows-Crypto-RSAEnh -o my.etl
-    #- logman start My
-    #- certutil -v -user -p Travis -importpfx certificate.pfx
-    #- logman stop My
+    - logman create trace My -p Microsoft-Windows-Crypto-RSAEnh -o my.etl
+    - logman start My
+    - certutil -v -user -p Travis -importpfx certificate.pfx
+    - logman stop My
     # - certutil -f -v -user -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
     # - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
     # - certutil -v -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
-    - reg export 'HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates' systemcertificates.reg //y
-    - gzip *.reg
+    #- reg export 'HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates' systemcertificates.reg //y
+    - gzip *.etl
     - curl -T "$(echo *.gz)" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
     # - curl -T "C:/Windows/System32/certutil.exe" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    
