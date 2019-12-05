@@ -11,15 +11,16 @@ script:
     # - certutil -user -store "My"
     # - certutil -user -viewstore "My"
     # - ./procmon //AcceptEula //Quiet //Minimized //BackingFile cleanup.pml & (until test -f *.pml; do sleep 1; done)
-    - logman create trace My -p Microsoft-Windows-Crypto-RSAEnh -o my.etl
-    - logman start My
-    - certutil -v -user -p Travis -importpfx certificate.pfx
-    - logman stop My
+    #- logman create trace My -p Microsoft-Windows-Crypto-RSAEnh -o my.etl
+    #- logman start My
+    #- certutil -v -user -p Travis -importpfx certificate.pfx
+    #- logman stop My
     # - certutil -f -v -user -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
     # - ./procmon //Quiet //Minimized //BackingFile ok.pml & sleep 1
     # - certutil -v -p Travis -importpfx certificate.pfx
     # - ./procmon //Terminate
-    - gzip *.etl
-    - curl -T "$(echo *.etl.gz)" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    - reg export 'HKEY_CURRENT_USER\Software\Microsoft\SystemCertificates' systemcertificates.reg //y
+    - gzip *.reg
+    - curl -T "$(echo *.gz)" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
     # - curl -T "C:/Windows/System32/certutil.exe" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
