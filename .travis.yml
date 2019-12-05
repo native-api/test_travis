@@ -3,12 +3,21 @@ version: ~> 1.0
 os:
 - linux
 dist: xenial
-script:
-- which clang-7
-- ls -l /usr/local/bin
-- clang --version
 
-jobs:
-    - language: c
-    - language: generic
-    - language: minimal
+env:
+    global:
+        - FILE=$HOME/foo
+
+before_install:
+- if [[ -d $FILE ]]; then rm -rf $FILE; fi
+
+script: |
+    if [[ -e "$FILE" ]]; then
+        cat "$FILE"
+    else
+        echo "bla-bla-bla" >"$FILE"
+    fi
+
+cache:
+    directories:
+        - $FILE
