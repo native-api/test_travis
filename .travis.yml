@@ -1,23 +1,11 @@
-language: shell
+language: ruby
 version: ~> 1.0
 os:
 - linux
 dist: xenial
 
-env:
-    global:
-        - FILE=$HOME/foo
+rvm: jruby-9.1
 
-before_install:
-- if [[ -d $FILE ]]; then rm -rf $FILE; fi
-
-script: |
-    if [[ -e "$FILE" ]]; then
-        cat "$FILE"
-    else
-        echo "bla-bla-bla" >"$FILE"
-    fi
-
-cache:
-    directories:
-        - $FILE
+script:
+    - grep -rF $HOME /opt -e org.jruby.dist
+    - grep -rF $HOME /opt -e --add-opens
