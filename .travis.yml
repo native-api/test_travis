@@ -1,11 +1,12 @@
-language: ruby
+language: minimal
 version: ~> 1.0
 os:
 - linux
-dist: xenial
+dist: bionic
 
-rvm: jruby-9.1
+arch: arm64
 
 script:
-    - grep -rF $HOME /opt -e org.jruby.dist
-    - grep -rF $HOME /opt -e --add-opens
+    - cat /proc/cpuinfo
+    - lscpu
+    - sudo dmidecode --type processor
