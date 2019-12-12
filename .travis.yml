@@ -1,5 +1,5 @@
 os: windows
-version: ~> 1.0
+#version: ~> 1.0
 
 jobs:
     - language: c
@@ -13,4 +13,4 @@ jobs:
     - language: minimal
     - language: powershell
     - language: script
-    - language: sh
+ #   - language: sh
