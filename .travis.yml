@@ -12,5 +12,5 @@ jobs:
     - language: julia
     - language: minimal
     - language: powershell
-    - language: script
+ #  - language: script
  #   - language: sh
