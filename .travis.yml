@@ -1,12 +1,15 @@
-language: minimal
-version: ~> 1.0
-os:
-- linux
-dist: bionic
+os: windows
 
-arch: arm64
-
-script:
-    - cat /proc/cpuinfo
-    - lscpu
-    - sudo dmidecode --type processor
+jobs:
+    - language: c
+    - language: cpp
+    - language: node_js
+    - language: rust
+    - language: go
+    - language: csharp
+    - language: generic
+    - language: julia
+    - language: minimal
+    - language: powershell
+    - language: script
+    - language: sh
