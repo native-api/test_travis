@@ -1,43 +1,43 @@
 ---
 os: linux
-dist: bionic
+dist: xenial
 
 matrix:
     include:
-        - language: android
+        # - language: android
         - language: c
-        - language: csharp
-        - language: cpp
-        - language: clojure
-        - language: crystal
-        - language: d
-        - language: dart
-        - language: elm
-        - language: erlang
-          otp_release: 18.1
-        - language: elixir
-          otp_release: 18.1
+        # - language: csharp
+        # - language: cpp
+        # - language: clojure
+        # - language: crystal
+        # - language: d
+        # - language: dart
+        # - language: elm
+        # - language: erlang
+          # otp_release: 18.1
+        # - language: elixir
+          # otp_release: 18.1
         - language: generic
-        - language: go
-        - language: groovy
-        - language: haskell
-        - language: haxe
-        - language: java
-        - language: node_js
-        - language: julia
-        - language: minimal
-        - language: bash
-        - language: sh
-        - language: shell
-        - language: nix
-        - language: perl
-        - language: php
-        - language: python
-        - language: r
-        - language: ruby
-        - language: rust
-        - language: scala
-        - language: smalltalk
+        # - language: go
+        # - language: groovy
+        # - language: haskell
+        # - language: haxe
+        # - language: java
+        # - language: node_js
+        # - language: julia
+        # - language: minimal
+        # - language: bash
+        # - language: sh
+        # - language: shell
+        # - language: nix
+        # - language: perl
+        # - language: php
+        # - language: python
+        # - language: r
+        # - language: ruby
+        # - language: rust
+        # - language: scala
+        # - language: smalltalk
 
 script:
     - pyenv versions
