@@ -1,20 +1,10 @@
-os: windows
 version: ~> 1.0
 
 jobs:
-    include:
-    - language: bash
-    - language: c
-    - language: cpp
-    - language: node_js
-    - language: rust
-    - language: go
-    - language: csharp
-    - language: generic
-    - language: julia
-    - language: minimal
-    - language: powershell
-    - language: ruby
-    - language: script
-    - language: sh
-    - language: shell
+    -
+    -   script:
+        - echo 'foo'
+        import: baz.yml
+script:
+    - echo 'bar'
+import: baz.yml
