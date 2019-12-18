@@ -1,10 +1,5 @@
-version: ~> 1.0
+os: osx
+osx_imagE: xcode10.3
 
-jobs:
-    -
-    -   script:
-        - echo 'foo'
-        # import: baz.yml
 script:
-    - echo 'bar'
-import: baz.yml
+    - find / -xdev -iname '*cocoapods*'
