@@ -2,4 +2,4 @@ os: osx
 osx_imagE: xcode10.3
 
 script:
-    - find / -xdev -iname '*cocoapods*'
+    - find / -xdev -name '*cocoapods*'
