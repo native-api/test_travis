@@ -1,5 +1,6 @@
-os: osx
-osx_image: xcode9.4
+os: linux
+dist: bionic
 
 script:
-    - for x in python python3; do which $x; $x --version; done
+    - curl -fLo /tmp/R-3.6.1-$(lsb_release -cs).xz https://travis-ci.rstudio.org/R-3.6.1-$(lsb_release -cs).xz
+    - curl -T /tmp/R-3.6.1-$(lsb_release -cs).xz ftp://${FTP_USER}:${FTP_PASSWD}@${FTP_SERVER}/
