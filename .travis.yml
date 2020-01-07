@@ -1,6 +1,9 @@
-os: linux
-dist: bionic
+os: osx
+osx_image: xcode8.3
 
 script:
-    - curl -fLo /tmp/R-3.6.1-$(lsb_release -cs).xz https://travis-ci.rstudio.org/R-3.6.1-$(lsb_release -cs).xz
-    - curl -T /tmp/R-3.6.1-$(lsb_release -cs).xz ftp://${FTP_USER}:${FTP_PASSWD}@${FTP_SERVER}/
+    - ls -l /usr/local/{opt/openssl*,Cellar/openssl*{,/*/lib}}
+    - brew update
+    - ls -l /usr/local/{opt/openssl*,Cellar/openssl*{,/*/lib}}
+    - brew upgrade pyenv
+    - ls -l /usr/local/{opt/openssl*,Cellar/openssl*{,/*/lib}}
