@@ -1,9 +1,11 @@
-os: osx
-osx_image: xcode8.3
+os: linux
+dist: bionic
 
+addons:
+    apt:
+        sources:
+            - sourceline: "ppa:projectatomic/ppa"
+        packages:
+            - podman
 script:
-    - ls -l /usr/local/{opt/openssl*,Cellar/openssl*{,/*/lib}}
-    - brew update
-    - ls -l /usr/local/{opt/openssl*,Cellar/openssl*{,/*/lib}}
-    - brew upgrade pyenv
-    - ls -l /usr/local/{opt/openssl*,Cellar/openssl*{,/*/lib}}
+    - podman --version
