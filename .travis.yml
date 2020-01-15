@@ -1,11 +1,4 @@
-os: linux
-dist: bionic
-
-addons:
-    apt:
-        sources:
-            - sourceline: "ppa:projectatomic/ppa"
-        packages:
-            - podman
-script:
-    - podman --version
+language: generic
+deploy:
+    provider: script
+    script: mkdir tmp && cd tmp && pwd
