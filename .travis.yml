@@ -1,5 +1,8 @@
-os: windows
+os:
+    - linux
+    - windows
+    - osx
 language: generic
 
 script:
-    - powershell -command '$PSVersionTable'
+    - cat ~/.m2/settings.xml
