@@ -5,9 +5,9 @@ os:
 language: generic
 
 script:
-    - set | grep -i rvm
-    - which rvm; ls -l "$(dirname "$(which rvm)")/.."
+    #- set | grep -i rvm
+    #- which rvm; ls -l "$(dirname "$(which rvm)")/.."
     - git clone https://github.com/travis-ci/dpl --depth=50
     - cd dpl
-    - source "$(dirname "$(which rvm)")/../scripts/rvm"
+    #- source "$(dirname "$(which rvm)")/../scripts/rvm"
     
