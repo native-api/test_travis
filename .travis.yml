@@ -5,4 +5,9 @@ os:
 language: generic
 
 script:
-    - cat ~/.m2/settings.xml
+    - set | grep -i rvm
+    - which rvm; ls -l "$(dirname "$(which rvm)")/.."
+    - git clone https://github.com/travis-ci/dpl --depth=50
+    - cd dpl
+    - source "$(dirname "$(which rvm)")/../scripts/rvm"
+    
