@@ -11,6 +11,7 @@ script:
     - which realpath
     - ls -l $(which realpath)
     - realpath --version
+    - realpath -m "$(which bash)/.."
     
 jobs:
     include:
