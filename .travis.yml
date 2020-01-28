@@ -1,13 +1,27 @@
 os:
     - linux
-    - windows
-    - osx
+arch:
+    - amd64
+    - aarch64
+    - ppc64le
+    - s390x
 language: generic
 
 script:
-    #- set | grep -i rvm
-    #- which rvm; ls -l "$(dirname "$(which rvm)")/.."
-    - git clone https://github.com/travis-ci/dpl --depth=50
-    - cd dpl
-    #- source "$(dirname "$(which rvm)")/../scripts/rvm"
+    - which realpath
+    - ls -l $(which realpath)
+    - realpath --version
     
+jobs:
+    include:
+        - os: osx
+          osx_image: xcode6.4
+        - os: osx
+          osx_image: xcode7.3.1
+        - os: osx
+          osx_image: xcode8.3
+        - os: osx
+          osx_image: xcode9.3
+        - os: osx
+          osx_image: xcode10.2
+        - os: windows
