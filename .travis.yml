@@ -1,5 +1,7 @@
 os:
     - linux
+dist:
+    xenial
 arch:
     - amd64
     - aarch64
@@ -9,12 +11,19 @@ language: generic
 
 script:
     - which realpath
-    - ls -l $(which realpath)
+    - ls -l "$(which realpath)"
     - realpath --version
-    - realpath -m "$(which bash)/.."
+    - ln -s "$(which realpath)" s1
+    - realpath -Pm "s1/.."
     
 jobs:
     include:
+        - dist: precise
+          name: precise
+        - dist: trusty
+          name: trusty
+        - dist: bionic
+          name: bionic
         - os: osx
           osx_image: xcode6.4
         - os: osx
