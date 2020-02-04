@@ -2,36 +2,8 @@ os:
     - linux
 dist:
     xenial
-arch:
-    - amd64
-    - aarch64
-    - ppc64le
-    - s390x
-language: generic
-
 script:
-    - which realpath
-    - ls -l "$(which realpath)"
-    - realpath --version
-    - ln -s "$(which realpath)" s1
-    - realpath -Pm "s1/.."
-    
-jobs:
-    include:
-        - dist: precise
-          name: precise
-        - dist: trusty
-          name: trusty
-        - dist: bionic
-          name: bionic
-        - os: osx
-          osx_image: xcode6.4
-        - os: osx
-          osx_image: xcode7.3.1
-        - os: osx
-          osx_image: xcode8.3
-        - os: osx
-          osx_image: xcode9.3
-        - os: osx
-          osx_image: xcode10.2
-        - os: windows
+    - source travis_retry.bash
+    - trap 'travis_terminate 1' ERR
+    - travis_retry source myrc
+    - trap ERR

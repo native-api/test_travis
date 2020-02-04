@@ -1,0 +1,6 @@
+#!/bin/echo source me
+set -e
+echo begin testing
+which imnothere
+echo got past this point, unexpected.
+set +e
