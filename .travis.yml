@@ -4,6 +4,8 @@ dist:
     xenial
 script:
     - source travis_retry.bash
-    - trap 'travis_terminate 1' ERR
-    - travis_retry source myrc
-    - trap ERR
+    # - trap 'travis_terminate 1' ERR
+    # - travis_retry source myrc
+    # - trap ERR
+    - source myrc
+    - travis_terminate 1
