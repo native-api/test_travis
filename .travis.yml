@@ -1,11 +1,8 @@
-os:
-    - linux
-dist:
-    xenial
+---
+os: windows
+language: shell
 script:
-    - source travis_retry.bash
-    # - trap 'travis_terminate 1' ERR
-    # - travis_retry source myrc
-    # - trap ERR
-    - source myrc
-    - travis_terminate 1
+    - cat <(echo -e 'echo on\r') 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' >t.bat
+    - xxd t.bat | head
+    - cp t.bat 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat'
+    - cmd.exe /C '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat" amd64'
