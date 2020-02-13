@@ -1,13 +1,9 @@
 ---
-os: windows
+os: linux
 language: shell
+arch: arm64
 env:
     global:
         - "PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
 script:
-    - cat <(echo -e 'echo on\r') 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat' >t.bat
-    - xxd t.bat | head
-    - cp t.bat 'C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat'
-    - set -x
-    - cmd.exe /C '"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Auxiliary\Build\vcvarsall.bat"' amd64
-    - set +x
+    - mount
