@@ -1,9 +1,5 @@
----
+language: csharp
 os: linux
-language: shell
-arch: arm64
-env:
-    global:
-        - "PS4='+(${BASH_SOURCE}:${LINENO}): ${FUNCNAME[0]:+${FUNCNAME[0]}(): }'"
-script:
-    - mount
+dist: xenial
+mono: none
+dotnet: 3.1
