@@ -1,7 +1,18 @@
 os: linux
 dist: xenial
-language: python
-python: 3.8
+language: generic
 
 script:
+    # - find / -xdev -name pyenv
+    - echo "$PATH"
+    - sudo python -m pip install -U virtualenv
+    - >-
+        sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev
+        libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev
+        xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+    - cd /opt/pyenv/plugins/python-build/../.. && sudo git checkout master && sudo git pull && cd -
+    - sudo $(which pyenv) install -s 3.8.1
+    - python -m virtualenv test --python=$(pyenv root)/versions/3.8.1/bin/python
+    - source test/bin/activate
     - python -c 'import site; print(dir(site)); print(site.getsitepackages())'
+    - deactivate
