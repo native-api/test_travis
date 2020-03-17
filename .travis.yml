@@ -1,11 +1,4 @@
-os: osx
+os: linux
 language: generic
-osx_image: xcode11.3
-
-addons:
-    homebrew:
-        packages:
-            - qt
-
-script:
-    - brew install ruby
+services:
+    - xvfb
