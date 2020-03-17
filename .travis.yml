@@ -2,3 +2,14 @@ os: linux
 language: generic
 services:
     - xvfb
+addons:
+    apt:
+        packages:
+            - xvfb
+    
+jobs:
+     include:
+        - arch: amd64
+          name: amd64
+        - arch: arm64
+          name: arm64
