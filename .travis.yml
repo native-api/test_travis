@@ -1,5 +1,5 @@
 os: linux
-dist: bionic
+dist: xenial
 language: generic
 services:
     - xvfb
@@ -13,7 +13,7 @@ jobs:
         - arch: amd64
         - arch: arm64
 script:
-    - ps -e | grep -i xvfb
-    - readarray -d $'\0' -t FF < <(find /usr/lib -xdev -name xvfb.service -print0 2>/dev/null)
+    - ps aux | grep -i xvfb
+    - readarray -d $'\0' -t FF < <(find / -xdev -name xvfb.service -print0 2>/dev/null)
     - ls -l "${FF[@]}"
     - cat -n "${FF[@]}"
