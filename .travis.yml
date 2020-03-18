@@ -14,6 +14,6 @@ jobs:
         - arch: arm64
 script:
     - ps aux | grep -i xvfb
-    - readarray -d $'\0' -t FF < <(find /lib /usr -name xvfb.service -print0 2>/dev/null)
+    - readarray -t FF < <(find /lib /usr -name xvfb.service 2>/dev/null)
     - ls -l "${FF[@]}"
     - cat -n "${FF[@]:-/dev/null}"
