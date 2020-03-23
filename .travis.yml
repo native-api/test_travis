@@ -1,19 +1,15 @@
-os: linux
+language: java
 dist: xenial
-language: generic
-services:
-    - xvfb
-addons:
-    apt:
-        packages:
-            - xvfb
-    
-jobs:
-     include:
-        - arch: amd64
-        - arch: arm64
+jdk:
+  - openjdk13
 script:
-    - ps aux | grep -i xvfb
-    - readarray -t FF < <(find /lib /usr -name xvfb.service 2>/dev/null)
-    - ls -l "${FF[@]}"
-    - cat -n "${FF[@]:-/dev/null}"
+  - echo "$PATH"
+  - which -a java
+  - java -version
+  - |
+    python -c 'if True:
+        import os
+        print os.environ["PATH"]
+        os.system("which -a java")
+        os.system("java -version")
+        '
