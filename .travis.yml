@@ -1,12 +1,13 @@
-language: java
-dist: xenial
-jdk:
-  - openjdk13
-script:
-  - echo "$PATH"
-  - which -a java
-  - java -version
-  - which python
-  - python -c 'import os; print os.environ["PATH"]; os.system("which -a java")'
-  - /usr/bin/python -c 'import os; print os.environ["PATH"]'
-  - pyenv --version
+language: generic
+os: osx
+
+addons:
+  homebrew:
+    packages:
+      - beanstalk
+      
+osx_image:
+  - xcode9.2
+  - xcode9.4
+  - xcode10.2
+  - xcode11.3
