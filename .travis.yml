@@ -1,13 +1,10 @@
 language: generic
-os: osx
+os: linux
 
-addons:
-  homebrew:
-    packages:
-      - beanstalk
-      
-osx_image:
-  - xcode9.2
-  - xcode9.4
-  - xcode10.2
-  - xcode11.3
+arch:
+  - amd64
+  - arm64
+
+script:
+  - ls -ld ~/.cache
+  - ls -lR ~/.cache
