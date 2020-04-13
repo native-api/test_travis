@@ -7,7 +7,7 @@ arch:
   - arm64
 
 script:
-  - set
   - umask
-  - ls -ld ~/.cache
-  - ls -lR ~/.cache
+  - ls -lR ~/.cache/pip
+  - sudo chown -Rv $USER:$GROUP ~/.cache/pip/wheels
+  - ls -lR ~/.cache/pip
