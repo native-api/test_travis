@@ -1,13 +1,13 @@
-language: python
-python: 3.8
-os: linux
+os: osx
+osx_image: xcode11.3
 
-arch:
-  - amd64
-  - arm64
+language: node_js
+node_js: 10
+
+
 
 script:
-  - umask
-  - ls -lR ~/.cache/pip
-  - sudo chown -Rv $USER:$GROUP ~/.cache/pip/wheels
-  - ls -lR ~/.cache/pip
+  - which python python3 pyenv pip pip3
+  - pyenv versions
+  - pyenv root
+  - ls $(pyenv root)/*
