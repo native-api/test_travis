@@ -1,13 +1,7 @@
-os: osx
-osx_image: xcode11.3
+os: linux
 
-language: node_js
-node_js: 10
-
-
+language: java
 
 script:
-  - which python python3 pyenv pip pip3
-  - pyenv versions
-  - pyenv root
-  - ls $(pyenv root)/*
+  - which mvn
+  - find /usr -name '*jansi*'
