@@ -7,4 +7,4 @@ jdk:
 
 script:
   - which mvn
-  - find /usr -name '*jansi*'
+  - find /usr -name '*jansi*' -exec ls -l {} \;
