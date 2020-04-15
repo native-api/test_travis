@@ -8,3 +8,4 @@ jdk:
 script:
   - which mvn
   - find /usr -name '*jansi*' -exec ls -l {} \;
+  - mvn -X
