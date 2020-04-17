@@ -1,11 +1,17 @@
 os: linux
-
-language: java
-
-jdk: 
- - openjdk8
+dist: bionic
 
 script:
-  - which mvn
-  - find /usr -name '*jansi*' -exec ls -l {} \;
-  - mvn -X
+  - |
+    for p in python pip python2 python3 pip3; do
+      which $p
+      pyenv which $p
+      $p --version
+    done
+  - pyenv versions
+  
+jobs:
+  include:
+    - language: generic
+    - language: minimal
+    - language: python
