@@ -1,17 +1,9 @@
-os: linux
-dist: bionic
+os: osx
+osx_image: xcode10.1
+language: generic
 
 script:
-  - |
-    for p in python pip python2 python3 pip3; do
-      which $p
-      pyenv which $p
-      $p --version
-    done
-  - pyenv versions
-  
-jobs:
-  include:
-    - language: generic
-    - language: minimal
-    - language: python
+  - brew --version
+  - rvm --version
+  - rvm list
+  - set | grep -i brew
