@@ -1,9 +1,6 @@
-os: osx
-osx_image: xcode10.1
-language: generic
+language: php
+
 
 script:
-  - brew --version
-  - rvm --version
-  - rvm list
-  - set | grep -i brew
+  - apt-mark showmanual
+  - apt-mark showhold
