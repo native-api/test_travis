@@ -1,12 +1,8 @@
-os: windows
-language: shell
+language: rust
+cache:
+  cargo: true
+rust: nightly
 
 script:
-    - |
-      for key in hklm hkcu; do
-        reg export $key $key.txt
-        gzip $key.txt
-      done
-    - find /c | gzip >disk.txt.gz
-    - set >env.txt
-    - curl -T "{disk.txt.gz,hklm.txt.gz,hkcu.txt.gz,env.txt}" ftp://$FTP_USER:$FTP_PASSWD@$FTP_SERVER/
+    - find / -xdev -name rustc -exec bash -c 'echo; echo {}; {} -Vv' \;
+    - which -a rustc
