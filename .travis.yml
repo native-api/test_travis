@@ -1,16 +1,4 @@
-language: csharp
-mono: none
-dotnet: 3.1
+language: minimal
+os: windows
 script:
-    - cat /etc/apt/sources.list.d/dotnet-official.list
-    - apt show -a 'dotnet-sdk-*' | grep -E '^(Package|Version):'
-    
-jobs:
-    include:
-        - dist: xenial
-          name: xenial
-        - dist: bionic
-          name: bionic
-        - dist: focal
-          name: focal
-        
+    - id
