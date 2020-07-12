@@ -1,4 +1,5 @@
 language: minimal
 os: windows
 script:
-    - id
+    - which ruby git
+    - ruby -e '`git describe --tags`'
