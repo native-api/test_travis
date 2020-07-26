@@ -1,5 +1,13 @@
-language: minimal
-os: windows
+language: r
+dist: xenial
+
+addons:
+    apt:
+        packages:
+            - ca-certificates
+
+r_packages:
+    - covr
+install: skip
 script:
-    - which ruby git
-    - ruby -e '`git describe --tags`'
+    - strace -- Rscript -e 'covr::codecov()'
