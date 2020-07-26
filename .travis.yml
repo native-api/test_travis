@@ -1,13 +1,12 @@
 language: r
-dist: xenial
+r: release
 
 addons:
     apt:
         packages:
             - ca-certificates
 
-r_packages:
-    - covr
-install: skip
+install:
+    - Rscript -e 'install.packages("covr")'
 script:
-    - strace -- Rscript -e 'covr::codecov()'
+    - Rscript -e 'covr::codecov()'
