@@ -1,12 +1,14 @@
-language: r
-r: release
+language: python
 
-addons:
-    apt:
-        packages:
-            - ca-certificates
+matrix:
+  include:
+    - os: linux
+      dist: xenial
+      python: "3.8"
 
 install:
-    - Rscript -e 'install.packages("covr")'
+  - python -m pip install tox
+
 script:
-    - Rscript -e 'covr::codecov()'
+  - echo "got to the script section"
+
