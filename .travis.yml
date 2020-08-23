@@ -1,14 +1,13 @@
-language: python
+language: cpp
 
-matrix:
-  include:
-    - os: linux
-      dist: xenial
-      python: "3.8"
+dist: trusty
 
-install:
-  - python -m pip install tox
-
+addons:
+  apt:
+    packages:
+      - gcovr
+      
 script:
-  - echo "got to the script section"
-
+  - gcovr --version
+  - which -a gcovr
+  - gcovr --help
