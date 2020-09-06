@@ -1,13 +1,8 @@
-language: cpp
+language: R
 
-dist: trusty
+dist: bionic
 
-addons:
-  apt:
-    packages:
-      - gcovr
-      
+install: skip
+
 script:
-  - gcovr --version
-  - which -a gcovr
-  - gcovr --help
+  - Rscript -e '.libPaths()'
