@@ -8,3 +8,7 @@ install: skip
 
 script:
   - Rscript -e '.libPaths()'
+  - ls -dl /usr/local/lib/R/site-library
+  - ls -l /usr/local/lib/R/site-library
+  - ls -l /opt/R/*/lib/R/library
+  - ls -dl /opt/R/*/lib/R/library
