@@ -3,18 +3,21 @@ language: r
 os: linux
 language: r
 cache: Rcpp
-addons: {apt: {sources: [ubuntu-toolchain-r-test], packages: [g++-5]}}
+#addons: {apt: {sources: [ubuntu-toolchain-r-test], packages: [g++-5]}}
 env: ['ENVIRONMENT_LANGUAGE="r"']
 
 install: skip
 
 script:
-  - set | grep -E '^R_'
-  - ls -l /opt
-  - dpkg --list | cat
-  - dpkg --listfiles r
-  - Rscript -e '.libPaths()'
-  - ls -dl /usr/local/lib/R/site-library
-  - ls -l /usr/local/lib/R/site-library
-  - ls -l /opt/R/*/lib/R/library
-  - ls -dl /opt/R/*/lib/R/library
+  # - set | grep -E '^R_'
+  # - ls -l /opt
+  # - dpkg --list | cat
+  # - dpkg --listfiles r
+  # - Rscript -e '.libPaths()'
+  # - ls -dl /usr/local/lib/R/site-library
+  # - ls -l /usr/local/lib/R/site-library
+  # - ls -l /opt/R/*/lib/R/library
+  # - ls -dl /opt/R/*/lib/R/library
+  - apt-mark showauto
+  - apt-mark showmanual
+  
