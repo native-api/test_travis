@@ -1,13 +1,18 @@
-language: R
+language: r
 
-r: "4.0.0"
-
-dist: bionic
+os: linux
+language: r
+cache: Rcpp
+addons: {apt: {sources: [ubuntu-toolchain-r-test], packages: [g++-5]}}
+env: ['ENVIRONMENT_LANGUAGE="r"']
 
 install: skip
 
 script:
   - set | grep -E '^R_'
+  - ls -l /opt
+  - dpkg --list | cat
+  - dpkg --listfiles r
   - Rscript -e '.libPaths()'
   - ls -dl /usr/local/lib/R/site-library
   - ls -l /usr/local/lib/R/site-library
