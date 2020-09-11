@@ -1,9 +1,9 @@
-language: r
+language: generic
 
 os: linux
 
-r: bioc-release
+dist: focal
 
 script:
-  - export MAKEFLAGS="-j2"
-  - Rscript -e 'BiocManager::install("BiocCheck", ask=FALSE)'
+  - which python
+  - python --version
