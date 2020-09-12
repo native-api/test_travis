@@ -1,9 +1,6 @@
-language: generic
-
+language: R
 os: linux
 
-dist: focal
+install: skip
 
-script:
-  - which python
-  - python --version
+script: cat ~/Rprofile.site
