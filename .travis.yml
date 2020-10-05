@@ -1,6 +1,10 @@
-language: R
-os: linux
+language: generic
 
-install: skip
+script:
+    - alias python=python3
+    - python --version
 
-script: cat ~/Rprofile.site
+jobs:
+    include:
+        - os: linux
+        - os: osx
