@@ -2,4 +2,5 @@ language: cpp
 dist: bionic
 
 script:
+    - git fetch origin master:master
     - if [[ -n $TRAVIS_TAG ]]; then git branch --contains "$TRAVIS_TAG"; fi
