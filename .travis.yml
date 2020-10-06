@@ -1,10 +1,11 @@
-language: generic
+language: cpp
+dist: bionic
 
 script:
-    - alias python=python3
-    - python --version
+    - for f in python3 pip3; do which $f; pyenv which $f; $f --version; done
+    - pip3 freeze
 
-jobs:
-    include:
-        - os: linux
-        - os: osx
+arch:
+    - amd64
+    - arm64
+    - s390x
