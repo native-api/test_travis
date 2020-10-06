@@ -2,10 +2,4 @@ language: cpp
 dist: bionic
 
 script:
-    - for f in python3 pip3; do which $f; pyenv which $f; $f --version; done
-    - pip3 freeze
-
-arch:
-    - amd64
-    - arm64
-    - s390x
+    - if [[ -n $TRAVIS_TAG ]]; then git branch --contains "$TRAVIS_TAG"; fi
