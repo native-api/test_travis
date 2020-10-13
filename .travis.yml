@@ -4,7 +4,7 @@ osx_image: xcode11.3
 
 script:
     - echo "$PATH"
-    - eval "$(pyenv init -)"
+    - eval "$(pyenv init -)"; pyenv rehash
     - echo "$PATH"
     - which -a python python3
     - pyenv which python python3
