@@ -1,6 +1,7 @@
-language: cpp
-dist: bionic
+language: generic
+os: osx
+osx_image: xcode11.3
 
 script:
-    - git fetch origin master:master
-    - if [[ -n $TRAVIS_TAG ]]; then git branch --contains "$TRAVIS_TAG"; fi
+    - which -a python python3
+    - pyenv which python python3
