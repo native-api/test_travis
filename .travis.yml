@@ -3,5 +3,8 @@ os: osx
 osx_image: xcode11.3
 
 script:
+    - echo "$PATH"
+    - eval "$(pyenv init -)"
+    - echo "$PATH"
     - which -a python python3
     - pyenv which python python3
