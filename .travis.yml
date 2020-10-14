@@ -6,5 +6,7 @@ script:
     - echo "$PATH"
     - eval "$(pyenv init -)"; pyenv rehash
     - echo "$PATH"
+    - ls -l ~/.pyenv/shims
+    - pyenv shims
     - which -a python python3
     - pyenv which python python3
