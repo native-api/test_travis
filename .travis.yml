@@ -7,5 +7,5 @@ addons:
     - github.com
 
 script:
-    - set
+    - ls -l ~/.ssh
     - cat ~/.ssh/known_hosts
