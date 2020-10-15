@@ -1,5 +1,11 @@
 language: shell
 os: windows
 
+addons:
+  ssh_known_hosts:
+    - git.savannah.nongnu.org
+    - github.com
+
 script:
     - set
+    - cat ~/.ssh/known_hosts
