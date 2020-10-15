@@ -1,17 +1,5 @@
-language: generic
-os: osx
-osx_image: xcode11.3
-
-cache:
-    directories:
-        - $HOME/.pyenv/versions
+language: shell
+os: windows
 
 script:
-    - pyenv install -s 3.8.0
-    - echo "$PATH"
-    - eval "$(pyenv init -)"
-    - echo "$PATH"
-    - ls -l ~/.pyenv/shims
-    - pyenv shims
-    - which -a python python3
-    - pyenv which python python3
+    - set
