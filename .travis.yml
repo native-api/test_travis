@@ -4,4 +4,5 @@ dist: bionic
 arch: arm64
 
 script:
-    - echo FTP_SERVER=$FTP_SERVER
+    - nproc
+    - lscpu
