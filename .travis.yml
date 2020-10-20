@@ -3,6 +3,12 @@ os: linux
 dist: bionic
 arch: arm64
 
+addons:
+    apt:
+        packages:
+            - redis-server
+
 script:
-    - nproc
-    - lscpu
+    - sudo systemctl -l start redis-server
+    - sudo systemctl status redis-server.service
+    - sudo journalctl -xe
