@@ -1,8 +1,7 @@
 language: shell
 os: linux
 dist: bionic
-arch: s390x
+arch: arm64
 
 script:
-    - df -lh
-    - quota -u $USER
+    - echo FTP_SERVER=$FTP_SERVER
