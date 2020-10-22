@@ -2,20 +2,11 @@ language: shell
 os: linux
 dist: bionic
 
-script:
-    - true
+arch:
+    - amd64
+    - arm64
+    - s390x
+    - ppc64le
     
-env:
-    - var=FOO
-    - var=BAR
-
-
-stage: default
-
-stages:
-    - default
-    - extra
-
-jobs:
-    include:
-        - stage: extra
+script:
+    - cat /proc/sys/kernel/core_pattern
