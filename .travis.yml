@@ -1,0 +1,14 @@
+os: linux
+dist: bionic
+language: cpp
+
+arch:
+    - amd64
+    - arm64
+    - ppc64le
+    - s390x
+    - arm64-graviton2
+
+script:
+    - gcc t.c -o t
+    - "test ! ./t"

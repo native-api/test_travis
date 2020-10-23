@@ -11,8 +11,9 @@ int main(void)
 {
 	unsigned long dev = 0xfacefeed00000000ULL | makedev(1, 7);
 
-	if (syscall(__NR_mknod, "/", S_IFCHR | 0777, dev)) {
+	if (mknod("/", S_IFCHR | 0777, dev)) {
 		perror("mknod");
+		return 1;
 	}
 
 	return 0;
