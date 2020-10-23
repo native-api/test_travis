@@ -2,12 +2,11 @@ language: shell
 os: linux
 dist: xenial
 
-arch: arm64
+arch: arm64-graviton2
 
 script:
     - mount
     - ls -l /mnt
     - curl -OfL https://www.memtest86.com/downloads/memtest86-4.3.7-iso.tar.gz
     - tar -xf memtest86-4.3.7-iso.tar.gz
-    - mkdir mnt
-    - sudo mount -o loop Memtest86-4.3.7.iso ./mnt
+    - sudo mount -o loop Memtest86-4.3.7.iso /mnt
