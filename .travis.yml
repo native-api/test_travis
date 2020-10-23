@@ -2,10 +2,8 @@ language: shell
 os: linux
 dist: xenial
 
-arch: ppc64le
+arch: amd64
 
-services: docker
-    
 script:
-    - mount
-    - docker build - <Dockerfile
+    - lsmod
+    - ls -lR /lib/modules/$(uname -r)
