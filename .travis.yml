@@ -11,4 +11,4 @@ arch:
 
 script:
     - gcc t.c -o t
-    - "test ! ./t"
+    - ./t

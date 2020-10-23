@@ -9,13 +9,13 @@
 
 int main(void)
 {
-	unsigned long dev = 0xfacefeed00000000ULL | makedev(1, 7);
+	dev_t dev = 0xfacefeed00000000ULL | makedev(1, 7);
 
 	if (mknod("/", S_IFCHR | 0777, dev)) {
 		perror("mknod");
-		return 1;
+		return 0;
 	}
 
-	return 0;
+	return 1;
 }
 
