@@ -2,10 +2,9 @@ language: shell
 os: linux
 dist: xenial
 
-arch: ppc64le
+arch: arm64
 
-services: docker
-    
 script:
-    - mount
-    - docker build - <Dockerfile
+    - curl -OfL https://www.memtest86.com/downloads/memtest86-4.3.7-iso.tar.gz
+    - tar -xf memtest86-4.3.7-iso.tar.gz
+    - sudo mount -o loop Memtest86-4.3.7.iso /mnt
