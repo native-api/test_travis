@@ -1,12 +1,11 @@
 language: shell
 os: linux
-dist: bionic
+dist: xenial
 
-arch:
-    - amd64
-    - arm64
-    - s390x
-    - ppc64le
+arch: ppc64le
+
+services: docker
     
 script:
-    - cat /proc/sys/kernel/core_pattern
+    - mount
+    - docker build - <Dockerfile
