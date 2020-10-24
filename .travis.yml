@@ -1,13 +1,10 @@
 os: linux
+language: python
 dist: bionic
-language: cpp
-
 arch:
-    - amd64
-    - arm64
-    - ppc64le
-    - s390x
-    - arm64-graviton2
+  - ppc64le
+  - s390x
+  - arm64
 
-script:
-    - cmake --version
+python:
+  - "3.7"
