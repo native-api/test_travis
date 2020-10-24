@@ -10,5 +10,4 @@ arch:
     - arm64-graviton2
 
 script:
-    - gcc t.c -o t
-    - ./t
+    - cmake --version
