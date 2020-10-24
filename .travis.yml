@@ -1,13 +1,12 @@
 os: linux
-language: python
-dist: bionic
+language: generic
+dist: xenial
 arch:
+  - amd64
   - ppc64le
   - s390x
   - arm64
+  - arm64-graviton2
 
-python:
-  - "3.7"
-  
-install: skip
-script: skip
+script:
+    - pyenv versions
