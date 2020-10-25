@@ -1,13 +1,12 @@
-os: linux
-language: generic
 dist: xenial
-arch:
-  - amd64
-  - ppc64le
-  - s390x
-  - arm64
-  - arm64-graviton2
 
-script:
-    - which pyenv
-    - /opt/pyenv/bin/pyenv versions
+language: generic
+
+addons:
+  apt:
+    packages:
+    - graphviz
+    - libalut0
+    - dbus-x11
+    - tidy
+    - pulseaudio-module-x11
