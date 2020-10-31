@@ -3,10 +3,8 @@ dist: xenial
 language: generic
 
 addons:
-  apt:
-    packages:
-    - graphviz
-    - libalut0
-    - dbus-x11
-    - tidy
-    - pulseaudio-module-x11
+    apt:
+        packages:
+            - pv
+script:
+    - gunzip -c idea.log.gz | pv -L 1K
