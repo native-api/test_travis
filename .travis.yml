@@ -1,9 +1,5 @@
 os: windows
 language: shell
 
-install:
-    - powershell -c "Install-WindowsFeature Server-Media-Foundation"
-    
 script:
-    - ls -l /c/Windows/System32
-    - ls /c/Windows/WinSxS
+    - powershell -c "Get-WindowsCapability -Online"
