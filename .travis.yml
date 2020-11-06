@@ -1,10 +1,9 @@
-dist: xenial
+os: windows
+language: shell
 
-language: generic
-
-addons:
-    apt:
-        packages:
-            - pv
+install:
+    - powershell -c "Install-WindowsFeature Server-Media-Foundation"
+    
 script:
-    - gunzip -c idea.log.gz | pv -L 1K
+    - ls -l /c/Windows/System32
+    - ls /c/Windows/WinSxS
