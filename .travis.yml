@@ -1,5 +1,9 @@
-os: windows
-language: shell
+os: linux
+language: python
+
+python: 3.6.7
+
+install: skip
 
 script:
-    - powershell -c "Get-WindowsCapability -Online"
+    - pip freeze
