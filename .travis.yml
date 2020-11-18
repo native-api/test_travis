@@ -1,6 +1,7 @@
-os: windows
+os: osx
 language: shell
 
 install: skip
 
-script: skip
+script:
+    - true
