@@ -1,13 +1,9 @@
 os: linux
-language: minimal
+language: php
 
-addons:
-  apt:
-    sources:
-      - sourceline: "deb https://ookla.bintray.com/debian generic main"
-        key_url: https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x8756c4f765c9ac3cb6b85d62379ce192d401ab61
-    packages:
-      - speedtest
-
+install: skip
 script:
-  - speedtest --accept-license
+  - which -a ruby
+  - which -a bundle
+  - dpkg --list ruby
+  - rvm list
