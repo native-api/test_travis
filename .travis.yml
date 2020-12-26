@@ -1,9 +1,13 @@
 os: linux
-language: php
+language: generic
 
 install: skip
-script:
-  - which -a ruby
-  - which -a bundle
-  - dpkg --list ruby
-  - rvm list
+script: skip
+deploy:
+  - provider: script
+    script: |
+        echo foo
+        echo bar
+    edge:
+      source: native-api/dpl
+      branch: show_cmdline
