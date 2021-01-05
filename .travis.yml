@@ -6,6 +6,7 @@ os:
 script:
   - |
     echo building
+    echo \$SHELL=$SHELL
     if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
       echo "****> linux <****";
     elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
@@ -23,4 +24,6 @@ deploy:
     elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       echo "----> osx <----";
     fi
-  edge: true
+  edge:
+    source: native-api/dpl
+    branch: allow_newlines
