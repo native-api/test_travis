@@ -1,13 +1,25 @@
-os: linux
-language: generic
+language: node_js
+os:
+  - linux
+  - osx
+  
+script:
+  - |
+    echo building
+    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      echo "****> linux <****";
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      echo "----> osx <----";
+    fi
 
-install: skip
-script: skip
 deploy:
-  - provider: script
-    script: |
-        echo foo
-        echo bar
-    edge:
-      source: native-api/dpl
-      branch: show_cmdline
+  provider: script
+  on:
+    all_branches: true
+  script: |
+    echo deploying
+    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
+      echo "****> linux <****";
+    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
+      echo "----> osx <----";
+    fi
