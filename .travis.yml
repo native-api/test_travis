@@ -12,6 +12,9 @@ script:
     elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
       echo "----> osx <----";
     fi
+    
+after_script:
+  - cat /tmp/build.trace
 
 deploy:
   provider: script
