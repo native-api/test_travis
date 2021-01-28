@@ -1,33 +1,9 @@
-language: node_js
+language: minimal
 os:
   - linux
-  # - osx
   
 script:
-  - |
-    echo building
-    echo \$SHELL=$SHELL
-    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      echo "****> linux <****";
-    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      echo "----> osx <----";
-    fi
-    
-after_script:
-  - cat /tmp/build.trace
-
-deploy:
-  provider: script
-  on:
-    all_branches: true
-  script: |
-    echo deploying
-    if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
-      echo "****> linux <****";
-    elif [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
-      echo "----> osx <----";
-    fi
-  edge:
-    source: native-api/dpl
-    branch: allow_newlines
-trace: true
+  - true
+  
+if:
+  condition: "$TRAVIS_BRANCH =~ ^mast\S+$"
